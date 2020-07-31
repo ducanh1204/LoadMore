@@ -1,8 +1,6 @@
 package vn.edu.fpt.loadmore;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 import vn.edu.fpt.loadmore.model.Photo;
@@ -58,17 +53,4 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListHolder> {
         }
     }
 
-    private Bitmap loadImage(String link) {
-        URL url;
-        Bitmap bmp = null;
-        try {
-            url = new URL(link);
-            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return bmp;
-    }
 }
