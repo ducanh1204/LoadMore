@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -37,25 +39,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListHolder> {
     @Override
     public void onBindViewHolder(@NonNull final ListHolder holder, final int position) {
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final Bitmap bitmap = loadImage(photoList.get(position).getUrlL());
-                holder.img.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        holder.img.setImageBitmap(bitmap);
-                    }
-                });
-            }
-        });
-        thread.start();
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
+        Glide.with(context).load(photoList.get(position).getUrlL()).into(holder.img);
 
     }
 
